@@ -3,6 +3,5 @@ class HomeController < ApplicationController
     @title ='デイトラ'
   end
 
-  def about
-  end
+  
 end

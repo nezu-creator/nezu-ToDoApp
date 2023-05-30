@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'all_boards';
+@import 'brackets';
+@import 'home_business_advert';
+@import 'new_board';
+@import 'new_card';
+@import 'new_comment';
+
