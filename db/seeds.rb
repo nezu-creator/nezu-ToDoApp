@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Board.create({name: 'ユーザー名１', description:'課題はこれだ！課題はこれだ！課題はこれだ！'})
+Board.create({name: 'ユーザー名２', description:'次の問題は？次の問題は？次の問題は？次の問題は？'})
