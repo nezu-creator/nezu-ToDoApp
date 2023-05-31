@@ -1,34 +1,27 @@
-<div class="container">
 <h2>All Boards</h2>
-  <div class="card">
-    <div class="card_image">
-    </div>
-    <div class="card_content">
-      <div class="card_heart">
-        <span>23</span>
-      </div>
-      <div class="card_detail">
-        <div>
-          <p>cohki0305</p>
-          <p>2020/4/16</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card_image">
-    </div>
-    <div class="card_content">
-      <div class="card_heart">
-        <span>23</span>
-      </div>
-      <div class="card_detail">
-        <div>
-          <p>cohki0305</p>
-          <p>2020/4/16</p>
+
+
+<div class="container">
+  <% @boards.each do |board| %>
+      <div class="card">
+        <div class="card_image">
+          <%= image_tag 'eyecatch1.png' %>
+        </div>
+        <div class="card_content">
+          <div class="card_heart">
+            <%= image_tag 'heart.svg' %>
+            <span>23</span>
+          </div>
+          <div class="card_detail">
+            <%= image_tag 'default-avatar.png' %>
+            <div>
+              <p>cohki0305</p>
+              <p>2020/4/16</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+  <% end %>
+
 </div>
