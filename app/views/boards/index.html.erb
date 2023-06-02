@@ -4,24 +4,33 @@
 
 <div class="container">
   <% @boards.each do |board| %>
-      <div class="card">
-        <div class="card_image">
-          <%= image_tag 'eyecatch1.png' %>
+   <%= link_to board_path(id: board.id) do %>
+    <div class="card">
+      <div class="card_image">
+        <%= image_tag 'eyecatch1.png' %>
+      </div>
+      <div class="card_content">
+        <div class='card_title'>
+          <%= board.name %>
         </div>
-        <div class="card_content">
-          <div class="card_heart">
-            <%= image_tag 'heart.svg' %>
-            <span>23</span>
-          </div>
-          <div class="card_detail">
-            <%= image_tag 'default-avatar.png' %>
-            <div>
-              <p>cohki0305</p>
-              <p>2020/4/16</p>
-            </div>
+        <div class="card_heart">
+          <%= image_tag 'heart.svg' %>
+          <span>23</span>
+        </div>
+        <div class="card_detail">
+          <%= image_tag 'default-avatar.png' %>
+          <div>
+            <p>cohki0305</p>
+            <p>2020/4/16</p>
           </div>
         </div>
       </div>
+    </div>
+   <% end %>
   <% end %>
-
+ <%= link_to new_board_path do %>
+    <div class="float_btn">
+      <i class="fa fa-plus"></i>
+    </div>
+  <% end %>
 </div>
