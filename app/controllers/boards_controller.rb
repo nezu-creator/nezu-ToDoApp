@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
 
   def show
   end
-  
+
   def new
     @board = current_user.boards.build
   end
@@ -39,7 +39,6 @@ class BoardsController < ApplicationController
     board.destroy!
     redirect_to root_path, notice: '削除成功しました'
   end
-
 
   private
   def board_params
