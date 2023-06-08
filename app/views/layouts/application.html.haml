@@ -22,4 +22,8 @@
         .dropdown-content
           %a{:href => "#"} プロフィール
           = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
     = yield
