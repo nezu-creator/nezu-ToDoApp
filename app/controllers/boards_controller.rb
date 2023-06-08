@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    @board = current_user.boards.build(board_params)
   end
 
   def update
