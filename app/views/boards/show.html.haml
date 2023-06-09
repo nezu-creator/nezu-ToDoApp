@@ -3,12 +3,12 @@
   .article_detail
     = image_tag 'default-avatar.png'
     %div
-      %p cohki0305
+      %p= @board.user.display_name
       %p= @board.display_created_at
-    - if user_signed_in?
+    - if user_signed_in? && current_user.boards.exists?(id: @board.id)
       .article_detail_actions
         .dropdown
-          = image_tag 'actions.svg', class: 'dropbtn'       
+          = image_tag 'actions.svg', class: 'dropbtn'
           .dropdown-content.mini
             = link_to '編集する', edit_board_path(@board)
             = link_to '削除する', board_path(@board), data: { method: 'delete', confirm: '本当に？'}
