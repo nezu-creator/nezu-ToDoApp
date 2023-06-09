@@ -14,7 +14,7 @@
           .card_detail
             = image_tag 'default-avatar.png'
             %div
-              %p cohki0305
+              %p= board.user.display_name
               %p= board.display_created_at
   = link_to new_board_path do
     .float_btn

@@ -7,7 +7,7 @@
 #  name        :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  user_id     :bigint
 #
 # Indexes
 #
@@ -15,11 +15,12 @@
 #
 class Board < ApplicationRecord
 
-  belongs_to :user
 
   validates :name, presence: true
   validates :description, presence: true
   validates :description, uniqueness: true
+
+  belongs_to :user
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
