@@ -1,0 +1,21 @@
+%h2 All Boards
+.container
+  - @boards.each do |board|
+    = link_to board_path(id: board.id) do
+      .card
+        .card_image
+          = image_tag 'eyecatch1.png'
+        .card_content
+          .card_title
+            = board.name
+          .card_heart
+            = image_tag 'heart.svg'
+            %span 23
+          .card_detail
+            = image_tag 'default-avatar.png'
+            %div
+              %p= board.user.display_name
+              %p= board.display_created_at
+  = link_to new_board_path do
+    .float_btn
+      %i.fa.fa-plus

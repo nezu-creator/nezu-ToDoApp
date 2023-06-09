@@ -20,6 +20,7 @@ class Board < ApplicationRecord
   validates :description, presence: true
   validates :description, uniqueness: true
 
+  has_many :tasks, dependent: :destroy
   belongs_to :user
 
   def display_created_at
