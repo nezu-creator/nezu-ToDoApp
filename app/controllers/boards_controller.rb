@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @task = @board.task
   end
 
   def new

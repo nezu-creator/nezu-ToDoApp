@@ -18,4 +18,5 @@ class Comment < ApplicationRecord
   validates :description, uniqueness: true
 
   belongs_to :task
+  validates :content, presence: true
 end
