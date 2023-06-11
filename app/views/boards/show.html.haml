@@ -18,4 +18,7 @@
   .article_heart
     = image_tag 'heart.svg'
 
-
+.container
+  = link_to new_board_task_path(@board) do
+    .btn-secondary
+      +Add new card
