@@ -3,9 +3,6 @@
   %h1.article_title= @board.name
   .article_detail
     = image_tag 'default-avatar.png'
-    %div
-      %p= @board.user.display_name
-      %p= @board.display_created_at
     - if user_signed_in? && current_user.boards.exists?(id: @board.id)
       .article_detail_actions
         .dropdown

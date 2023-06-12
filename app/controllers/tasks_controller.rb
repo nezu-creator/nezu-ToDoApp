@@ -2,23 +2,28 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show]
 
   def index
-    @tasks = Task.all
+    @board = Board.find(params[:board_id])  # リクエストパラメータからboard_idを取得し、@boardを設定する
+    @tasks = @board.tasks  # @boardに関連するタスクを取得し、@tasksに代入する
   end
 
   def show
-    @comments = @task.comments
+    @tasks = @board.tasks
   end
 
   def new
-    @tasks = current_user.boards.build
+    @board = Board.find(params[:board_id])
+    @task = @board.tasks.build
   end
 
   def create
-    @task = current_user.tasks.build(task_params)
+    @board = Board.find(params[:board_id])  # リクエストパラメータからboard_idを取得し、@boardを設定する
+    @task = @board.tasks.build(task_params)  # @boardに関連するタスクをビルドする
+    @task.user = current_user # ユーザーにタスクを関連付ける
     if @task.save
-      redirect_to board_tasks_path(@task), notice: '保存できました'
+      redirect_to board_tasks_path(@board), notice: '保存できました'  # リダイレクト先のパスには@boardを渡す
     else
       flash.now[:error] = '保存できませんでした'
+      puts @task.errors.full_messages  # エラーメッセージをコンソールに出力
       render :new
     end
   end
