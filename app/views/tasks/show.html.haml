@@ -18,8 +18,14 @@
   .article_heart
     = image_tag 'heart.svg'
 
+ .article 
+  %h2  コメント一覧
+  - @comment.each do |comment|
+    .article_comment
+      %p= comment.content
+
 .container
-  = link_to new_board_task_comment_path(@tasks) do
+  = link_to new_board_task_comment_path(@task) do
     .btn-secondary
       +Add new comment
 

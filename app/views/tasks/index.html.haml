@@ -1,21 +1,18 @@
-%h2 All Boards
+%h2 Blackets
 .container
-  - @boards.each do |board|
-    = link_to board_path(id: board.id) do
-      .card
-        .card_image
-          = image_tag 'eyecatch1.png'
-        .card_content
-          .card_title
-            = board.name
-          .card_heart
-            = image_tag 'heart.svg'
-            %span 23
-          .card_detail
-            = image_tag 'default-avatar.png'
-            %div
-              %p= board.user.display_name
-              %p= board.display_created_at
-  = link_to new_board_path do
-    .float_btn
-      %i.fa.fa-plus
+  - @tasks.each do |task|
+    .card
+      .card_content
+        .card_title
+          = task.name
+        .card_heart
+          = image_tag 'heart.svg'
+          %span 23
+        .card_detail
+          = image_tag 'default-avatar.png'
+        .article_content
+          = task.description
+
+  = link_to new_board_task_path do
+    .btn-secondary
+      +Add new Card
