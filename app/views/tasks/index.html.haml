@@ -2,6 +2,9 @@
 .container
   - @tasks.each do |task|
     .card
+      - if task.eyecatch.attached?
+        .card_image
+          = image_tag task.eyecatch
       .card_content
         .card_title
           = task.name
