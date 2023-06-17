@@ -35,6 +35,7 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find(params[:id])
+    @board = @task.board
     if @task.update(task_params)
       redirect_to board_task_path(@task), notice: '更新できました'
     else
@@ -55,7 +56,11 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @board = Board.find(params[:board_id])
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
+    @board = @task.board
+    unless @board
+      flash[:error] = '対応するボードが見つかりませんでした'
+      redirect_to root_path
+    end
   end
 end

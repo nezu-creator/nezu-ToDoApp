@@ -1,2 +1,20 @@
-%h2  New Card
-= render 'form', board: @board
+%h2 New Card
+.container
+  %ul
+    - @task.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @task, url: board_tasks_path(@board), method: 'POST', local: true) do |f|
+    %div
+      = f.label :eyecatch, 'eyecatch'
+    %div
+      = f.file_field :eyecatch
+    %div
+      = f.label :title, 'Name'
+    %div
+      = f.text_field :name, class: 'text'
+    %div
+      = f.label :title, 'Description'
+    %div
+      = f.text_area :description
+    %div
+      = f.submit 'Submit', class: 'btn-primary'
