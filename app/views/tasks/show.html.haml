@@ -1,31 +1,33 @@
 %h2 Brackets
 .article
-  %h1.article_title= @board.name
+  - if @task.eyecatch.attached?
+    .article_image
+      = image_tag @task.eyecatch
+  %h1.article_title= @task.name
   .article_detail
     = image_tag 'default-avatar.png'
     %div
-      %p= @board.user.display_name
-      %p= @board.display_created_at
-    - if user_signed_in? && current_user.boards.exists?(id: @board.id)
+    - if user_signed_in? && current_user.tasks.exists?(id: @task.id)
       .article_detail_actions
         .dropdown
           = image_tag 'actions.svg', class: 'dropbtn'
           .dropdown-content.mini
-            = link_to '編集する', edit_board_path(@board)
-            = link_to '削除する', board_path(@board), data: { method: 'delete', confirm: '本当に？'}
-  .article_content
-    = @board.description
+            = link_to '編集する', edit_board_task_path(@board, @task)
+            = link_to '削除する', board_task_path(@board, @task), data: { method: 'delete', confirm: '本当に？'}
+    
+      .article_content
+        = @task.description
   .article_heart
     = image_tag 'heart.svg'
 
- .article 
+.article
   %h2  コメント一覧
-  - @comment.each do |comment|
+  - @comments.each do |comment|
     .article_comment
       %p= comment.content
 
 .container
-  = link_to new_board_task_comment_path(@task) do
+  = link_to new_board_task_comment_path(task_id: @task.id) do
     .btn-secondary
       +Add new comment
 
