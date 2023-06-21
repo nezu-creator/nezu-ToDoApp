@@ -56,8 +56,9 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = current_user.tasks.find(params[:id])
-    @board = @task.board
+    @task = Task.find_by(id: params[:id])
+    @board = @task&.board
+  
     unless @board
       flash[:error] = '対応するボードが見つかりませんでした'
       redirect_to root_path
