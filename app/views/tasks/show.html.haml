@@ -12,19 +12,20 @@
         .dropdown
           = image_tag 'actions.svg', class: 'dropbtn'
           .dropdown-content.mini
-            = link_to '編集する', edit_board_task_path(@board, @task)
-            = link_to '削除する', board_task_path(@board, @task), data: { method: 'delete', confirm: '本当に？'}
+            = link_to 'Edit', edit_board_task_path(@board, @task)
+            = link_to 'Delete', board_task_path(@board, @task), data: { method: 'delete', confirm: '本当に？'}
     
       .article_content
         = @task.description
-  .article_heart
-    = image_tag 'heart.svg'
+  
 
 .article
-  %h2  コメント一覧
+  %h2  Comment
   - @comments.each do |comment|
-    .article_comment
-      %p= comment.content
+    .article_detail
+      = image_tag 'default-avatar.png'
+      .article_comment
+        %p= comment.content
 
 .container
   = link_to new_board_task_comment_path(task_id: @task.id) do

@@ -1,30 +1,23 @@
 %h2 All Boards
 .container
   - @boards.each do |board|
-    .article_detail
-      - if user_signed_in? && current_user.boards.exists?(id: board.id)
-        .article_detail_actions
-          .dropdown
-            = image_tag 'actions.svg', class: 'dropbtn'
-            .dropdown-content.mini
-              = link_to '編集する', edit_board_path(board)
-              = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に？'}
-    = link_to board_tasks_path(board_id: board.id) do
-      .card
-        .card_content
-          .card_title
-            = board.name
-          .card_heart
-            = image_tag 'heart.svg'
-            %span 23
-          .card_detail
-            = image_tag 'default-avatar.png'
-            %div
+    .article 
+      = link_to board_tasks_path(board_id: board.id) do
+        .article_title
+          = board.name
+        %div 
+        - if user_signed_in? && current_user.boards.exists?(id: board.id)
+          .article_detail_actions
+            .dropdown
+              = image_tag 'actions.svg', class: 'dropbtn'
+              .dropdown-content.mini
+                = link_to 'Edit', edit_board_path(board)
+                = link_to 'Delete', board_path(board), data: { method: 'delete', confirm: '本当に？'}
         .article_content
           = board.description
-
+        .article_detail
+          = image_tag 'default-avatar.png'
 .container
   = link_to new_board_path do
     .btn-secondary
       +Add new board
-

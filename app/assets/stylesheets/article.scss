@@ -30,7 +30,9 @@ $container-padding: 16px;
     font-size: 16px;
   }
   &_title {
+    color: #000;
     font-size: 22px;
+    text-decoration: none;
   }
   &_comment {
     padding: 12px 0;
@@ -53,6 +55,7 @@ $container-padding: 16px;
     }
   }
   &_content {
+    color: #000;
     padding: 24px 0 32px;
   }
   &_heart {
