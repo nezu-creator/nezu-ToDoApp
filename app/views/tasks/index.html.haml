@@ -9,13 +9,10 @@
         .card_content
           .card_title
             = task.name
-          .card_heart
-            = image_tag 'heart.svg'
-            %span 23
-          .card_detail
-            = image_tag 'default-avatar.png'
           .article_content
             = task.description
+          .card_detail
+            = image_tag 'default-avatar.png'
 
 
   = link_to new_board_task_path do
