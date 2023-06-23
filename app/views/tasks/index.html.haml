@@ -13,6 +13,7 @@
             = task.description
           .card_detail
             = image_tag 'default-avatar.png'
+            %span= task.comment_count
 
 
   = link_to new_board_task_path do
